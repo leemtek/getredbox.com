@@ -1,5 +1,35 @@
+/* ===========================================================================
+    Logo Mods
+=========================================================================== */
+@media (min-width: 992px) {
+        /* This fixes the logo problem when scrolling down. */
+        .fixed-header-on .header .logo img {
+                max-height: 50px;
+                padding-top: 0px !important;
+        } /* .fixed-header-on .header .logo img */
+} /* @media (min-width: 992px) */
+
+
+/* ===========================================================================
+    Color of accordion when hovering over it in ABOUT section.
+=========================================================================== */
+.dark-translucent-bg a:not(.btn):hover {
+    color: #000000;
+}
+
+/* ===========================================================================
+    Image backgrounds.
+=========================================================================== */
 .background-img-it {
     background: url("/assets/images/wallpaper-information-technology.jpg") 50% 0px no-repeat;
 }
 
+/* ===========================================================================
+    Other
+=========================================================================== */
 .text-white { color: #ffffff; }
+.text-black { color: #000000; }
+
+.no-text-decoration { text-decoration: none !important; }
+
+.height-55 { height: 55px; }
