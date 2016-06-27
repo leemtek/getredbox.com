@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="en" ng-app="getredbox">
     <!--<![endif]-->
 
     <head>
@@ -62,6 +62,9 @@
         <link href="assets/the_project/css/style.css" rel="stylesheet" >
         <!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)-->
         <link href="assets/the_project/css/skins/red.css" rel="stylesheet">
+
+        <!-- Google reCAPTCHA -->
+        <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
 
         <!-- Custom css -->
         <link href="assets/the_project/css/custom.css" rel="stylesheet">
@@ -641,7 +644,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="footer-content">
+                                    <div class="footer-content" ng-controller="ctrlSendEmail">
                                         <h2 class="title">Contact Us</h2>
                                         <div class="alert alert-success hidden" id="MessageSent2">
                                             We have received your message, we will contact you very soon.
@@ -649,26 +652,49 @@
                                         <div class="alert alert-danger hidden" id="MessageNotSent2">
                                             Oops! Something went wrong please refresh the page and try again.
                                         </div>
-                                        <form role="form" id="footer-form" class="margin-clear">
+                                        <form role="form" name="formContactUs" class="margin-clear" novalidate="">
                                             <div class="form-group has-feedback mb-10">
                                                 <label class="sr-only" for="name2">Name</label>
-                                                <input type="text" class="form-control" id="name2" placeholder="Name" name="name2">
+                                                <input type="text" class="form-control"
+                                                    ng-class="{ 'has-error': formContactUs.frmName.$error.required && !formContactUs.frmName.$pristine }"
+                                                    id="frmName"
+                                                    placeholder="Name"
+                                                    ng-model="contactDetails.name"
+                                                    required
+                                                /><!-- /frmName -->
                                                 <i class="fa fa-user form-control-feedback"></i>
                                             </div>
                                             <div class="form-group has-feedback mb-10">
                                                 <label class="sr-only" for="email2">Email address</label>
-                                                <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email2">
+                                                <input type="email" class="form-control"
+                                                    id="frmEmail"
+                                                    placeholder="Enter email"
+                                                    ng-model="contactDetails.email"
+                                                    required
+                                                /><!-- /frmEmail -->
                                                 <i class="fa fa-envelope form-control-feedback"></i>
                                             </div>
                                             <div class="form-group has-feedback mb-10">
                                                 <label class="sr-only" for="message2">Message</label>
-                                                <textarea class="form-control" rows="4" id="message2" placeholder="Message" name="message2"></textarea>
+                                                <textarea id="frmMessage" rows="4" class="form-control"
+                                                    ng-class="{ 'has-error': formContactUs.frmMessage.$error.required && !formContactUs.frmMessage.$pristine }"
+                                                    placeholder="Message"
+                                                    ng-model="contactDetails.message"
+                                                    required
+                                                ></textarea><!-- /frmMessage -->
+
                                                 <i class="fa fa-pencil form-control-feedback"></i>
                                             </div>
-                                            <input type="submit" value="Send" class="margin-clear submit-button btn btn-default">
+                                            <div vc-recaptcha key="'6LcNoiMTAAAAANo5Nce1eKUXJ8ilUy1n4sg7khRu'"></div>
+                                            <button type="button" class="btn btn-primary text-white" ng-click="fnClearForm();">Clear</button>
+                                            <button type="button" class="btn btn-default" id="submit"
+                                                ng-click="fnSendForm()"
+                                                ng-class="{'disabled': formContactUs.$invalid}"
+                                                ng-disabled="formContactUs.$invalid"
+                                            >Send</button>
                                         </form>
-                                    </div>
-                                </div>
+                                    </div><!-- /footer-content -->
+                                </div><!-- /col-md-6 -->
                             </div>
                         </div>
                     </div>
@@ -699,8 +725,9 @@
         </div>
         <!-- page-wrapper end -->
 
-        <!-- JavaScript files placed at the end of the document so the pages load faster -->
-        <!-- ================================================== -->
+        <!-- =============================================================================
+            JavaScript files placed at the end of the document so the pages load faster
+        ============================================================================= -->
         <!-- Jquery and Bootstap core js files -->
         <script type="text/javascript" src="assets/the_project/plugins/jquery.min.js"></script>
         <script type="text/javascript" src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -735,5 +762,13 @@
         <!-- Custom Scripts -->
         <script type="text/javascript" src="assets/the_project/js/custom.js"></script>
 
+        <!-- =============================================================================
+            AngularjS Components
+        ============================================================================= -->
+        <script src="assets/bower_components/angular/angular.min.js"></script>
+        <script src="assets/bower_components/angular-recaptcha/release/angular-recaptcha.min.js"></script>
+        <script src="assets/js/angular/app.js"></script>
+        <script src="assets/js/angular/services.js"></script>
+        <script src="assets/js/angular/controllers.js"></script>
     </body>
 </html>

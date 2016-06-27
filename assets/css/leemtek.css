@@ -17,12 +17,24 @@
     color: #000000;
 }
 
+
+/* ===========================================================================
+    Footer Elements
+=========================================================================== */
+/* Send Button */
+.btn-default.disabled.focus, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default[disabled].focus, .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover {
+    background-color: #dc5b5b;
+    border-color: #dc5b5b;
+}
+
+
 /* ===========================================================================
     Image backgrounds.
 =========================================================================== */
 .background-img-it {
     background: url("/assets/images/wallpaper-information-technology.jpg") 50% 0px no-repeat;
 }
+
 
 /* ===========================================================================
     Other
