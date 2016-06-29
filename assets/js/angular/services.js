@@ -5,11 +5,12 @@
 
             // Store all contents provided by guest.
             $facSendEmail.contact = {
-                "name": "Duane Leem",
-                "email": "Duane@LeemTek.com",
-                "message": "Test email from: " + fnDateToday()
+                "name": null,
+                "email": null,
+                "message": null
             }; // contact
 
+            // Used to add a proper date string (testing purposes).
             function fnDateToday() {
                 return new Date().toDateString();
             } // fnDateToday()
