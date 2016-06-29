@@ -38,7 +38,7 @@
             'X-Mailer: PHP/' . phpversion();
 
         // Send Email to ASP.
-        mail("forms@leemtek.com", $varSubject, $varMessage, $varHeaders);
+        mail("seana@getredbox.com", $varSubject, $varMessage, $varHeaders);
 
         http_response_code(200);
         exit(0);
