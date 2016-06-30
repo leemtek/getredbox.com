@@ -33,20 +33,20 @@
                     $("#submit").prop('disabled', true);
 
                     // send POST data
-                    $http({
-                        method: "POST",
-                        url: "/assets/app_modules/email-sender.php",
-                        data: $scope.contactDetails
-                    }).then(function successCallback(response) {
-                        // update submit button to indicate success
-                        $('#submit').text('Email Sent');
-                        $('#submit').removeClass('btn-info').addClass('btn-success');
-                        $("#submit").prop('disabled', true);
-                    }, function errorCallback(response) {
-                        // update submit button to indicate an error
-                        $('#submit').text('Error Sending');
-                        $('#submit').removeClass('btn-info').addClass('btn-danger');
-                    });
+                    $http.post("http://localhost:3003/forms/getredbox", $scope.contactDetails)
+                        .then(function successCallback(response) {
+                            if(response.data.sent === "yes") {
+                                // update submit button to indicate success
+                                factorySendEmail.fnSendSuccessDOM();
+                            } else {
+                                // update submit button to indicate an error
+                                factorySendEmail.fnSendErrorDOM();
+                            } // if
+                        }, function errorCallback(response) {
+                            // update submit button to indicate an error
+                            factorySendEmail.fnSendErrorDOM();
+                        }) // .then
+                    ; // $http.post
                 } // if
             }; // fnSendForm()
         }]) // .controller("ctrlSendEmail")
