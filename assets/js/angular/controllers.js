@@ -33,7 +33,7 @@
                     $("#submit").prop('disabled', true);
 
                     // send POST data
-                    $http.post("http://localhost:3003/forms/getredbox", $scope.contactDetails)
+                    $http.post("https://www.leemtek.com/forms/getredbox", $scope.contactDetails)
                         .then(function successCallback(response) {
                             if(response.data.sent === "yes") {
                                 // update submit button to indicate success
