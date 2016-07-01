@@ -7,8 +7,8 @@
     <head>
         <meta charset="utf-8">
         <title>Red Box Business Solutions</title>
-        <meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
-        <meta name="author" content="htmlcoder.me">
+        <meta name="description" content="Our professional services revolve around communication, data and marketing solutions that we've been offering for 20 years. These solutions include Voice, IT Services, Cable + Wire, Marketing + Design." />
+        <meta name="author" content="Duane Leem, Seana Fippin" />
 
         <!-- Mobile Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,15 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
         <meta name="theme-color" content="#ffffff">
+
+        <!-- Facebook Open Graph -->
+        <meta property="og:title" content="Red Box Business Solutions" />
+        <meta property="og:site_name" content="GetRedBox.com" />
+        <meta property="og:url" content="http://www.getredbox.com" />
+        <meta property="og:image" content="http://www.getredbox.com/assets/images/opengraph-getredbox.png" />
+        <meta property="og:description" content="Our professional services revolve around communication, data and marketing solutions that we've been offering for 20 years. These solutions include Voice, IT Services, Cable + Wire, Marketing + Design." />
+        <meta property="fb:app_id" content="663590747128686" />
+        <meta property="og:type" content="website">
 
         <!-- Web Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -71,13 +80,27 @@
         <link href="assets/css/leemtek.css" rel="stylesheet">
     </head>
 
-    <!-- body classes:  -->
-    <!-- "boxed": boxed layout mode e.g. <body class="boxed"> -->
-    <!-- "pattern-1 ... pattern-9": background patterns for boxed layout mode e.g. <body class="boxed pattern-1"> -->
-    <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
-    <!-- "gradient-background-header": applies gradient background to header -->
-    <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
     <body class="no-trans front-page transparent-header  ">
+        <!-- ==================================================================
+            Facebook SDK for JavaScript
+        ================================================================== -->
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '663590747128686',
+                    xfbml      : true,
+                    version    : 'v2.6'
+                });
+            };
+
+            (function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/sdk.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+        </script>
 
         <!-- scrollToTop -->
         <!-- ================ -->
