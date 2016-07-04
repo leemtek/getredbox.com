@@ -1,7 +1,19 @@
 var gulp = require("gulp"),
+    clean = require('gulp-clean'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify')
+    uglify = require('gulp-uglify'),
+    uglifycss = require('gulp-uglifycss')
+    gutil = require('gulp-util')
 ; // gulp
+
+/* =============================================================================
+    Obliterate assets/dist folder.
+============================================================================= */
+gulp.task("clean", function () {
+    return gulp.src("assets/dist", {read: false})
+        .pipe(clean());
+});
+
 
 /* =============================================================================
     CSS Files
@@ -30,6 +42,7 @@ gulp.task("styles", function() {
 
             // The Project core CSS file
             "assets/the_project/css/style.css",
+
             // Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)
             "assets/the_project/css/skins/red.css",
 
@@ -37,9 +50,13 @@ gulp.task("styles", function() {
             "assets/the_project/css/custom.css",
             "assets/css/leemtek.css"
         ])
-        .pipe(concat('styles.min.css'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./assets/dist/styles.min.css'));
+        .pipe(concat("styles.min.css"))
+        .pipe(uglifycss({
+            "maxLineLen": 80,
+            "uglyComments": true
+        })) // uglifycss
+        .pipe(gulp.dest("./assets/dist/"))
+    ; // return gulp.src()
 });
 
 /* =============================================================================
@@ -95,14 +112,10 @@ gulp.task("scripts", function() {
             // Custom Scripts
             "assets/the_project/js/custom.js"
         ])
-        .pipe(concat('scripts.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./assets/dist/scripts.min.js'));
-});
-
-gulp.task('clean', function () {
-    return gulp.src("assets/dist", {read: false})
-        .pipe(clean());
+        .pipe(concat("scripts.min.js"))
+        .pipe(uglify().on("error", gutil.log))
+        .pipe(gulp.dest("./assets/dist/"))
+    ; // return gulp.src()
 });
 
 /* =============================================================================
@@ -116,14 +129,15 @@ gulp.task("scripts-angular", function() {
             "assets/js/angular/services.js",
             "assets/js/angular/controllers.js"
         ])
-        .pipe(concat('angular-scripts.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./assets/dist/angular-scripts.min.js'));
+        .pipe(concat("angular-scripts.min.js"))
+        .pipe(uglify().on("error", gutil.log))
+        .pipe(gulp.dest('./assets/dist/'))
+    ; // return gulp.src()
 });
 
 /* =============================================================================
     Start Tasks
 ============================================================================= */
 gulp.task('default', [], function() {
-    gulp.start("styles", "scripts", "scripts-angular");
+    gulp.start("clean", "styles", "scripts", "scripts-angular");
 });
