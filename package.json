@@ -1,0 +1,27 @@
+{
+  "name": "getredbox.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://duaneleem@github.com/leemtek/getredbox.com.git"
+  },
+  "author": "Duane Leem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leemtek/getredbox.com/issues"
+  },
+  "homepage": "https://github.com/leemtek/getredbox.com#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.4"
+  },
+  "dependencies": {
+    "pump": "^1.0.1"
+  }
+}
